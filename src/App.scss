@@ -1,0 +1,20 @@
+@use "../styles/colors" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: $background;
+  color: $primary;
+}
+
+.main {
+  &__title {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    font-size: 3rem;
+  }
+}

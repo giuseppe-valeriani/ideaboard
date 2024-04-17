@@ -1,24 +1,10 @@
-import React, { useEffect, useState } from "react";
+import useLocalStorage from "../../hooks/useLocalStorage";
 import Note from "../Note/Note";
-import "./Board.scss";
 import NewNote from "../NewNote/NewNote";
+import "./Board.scss";
 
 const Board = () => {
-  const [storage, setStorage] = useState(null);
-
-  useEffect(() => {
-    const currentLocalStorage = localStorage.getItem("ideaboard");
-    const getList = currentLocalStorage
-      ? JSON.parse(currentLocalStorage)
-      : null;
-    getList?.length > 0 ? setStorage(getList) : setStorage([]);
-    console.log("click");
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("ideaboard", JSON.stringify(storage));
-    console.log("clack");
-  }, [storage]);
+  const [storage, setStorage] = useLocalStorage("ideaboard", []);
 
   if (!storage) {
     return <section>Loading...</section>;

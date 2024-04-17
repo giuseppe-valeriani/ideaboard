@@ -15,7 +15,7 @@ const Board = () => {
       {storage.map((note) => (
         <Note key={note.id} note={note} />
       ))}
-      <NewNote />
+      <NewNote storage={storage} setStorage={setStorage} />
     </section>
   );
 };

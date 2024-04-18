@@ -1,3 +1,5 @@
+@use "./colors" as *;
+
 @mixin tablet {
   @media (min-width: 768px) {
     @content;
@@ -8,4 +10,15 @@
   @media (min-width: 1280px) {
     @content;
   }
+}
+
+@mixin button {
+  background-color: $secondary;
+  padding: 0.4rem 0.8rem;
+  border: 2px solid $primary;
+  border-radius: 8px;
+  box-shadow: 3px 3px 3px $dark;
+  font-weight: 700;
+  text-transform: capitalize;
+  cursor: pointer;
 }

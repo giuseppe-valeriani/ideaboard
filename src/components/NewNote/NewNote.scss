@@ -1,2 +1,39 @@
+@use "../../../styles//mixins" as *;
+@use "../../../styles//colors" as *;
+
 .new-note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+
+  &__button {
+    @include button;
+    width: 8rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+  }
+
+  &__input {
+    width: 15rem;
+    resize: none;
+    margin: 0.1rem;
+    border: 2px solid $primary;
+    border-radius: 4px;
+    padding: 0.5rem;
+  }
+
+  &__area {
+    min-height: 6rem;
+  }
+
+  &__error {
+    border-color: $error;
+  }
 }

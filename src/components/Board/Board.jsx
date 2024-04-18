@@ -6,16 +6,22 @@ import "./Board.scss";
 const Board = () => {
   const [storage, setStorage] = useLocalStorage("ideaboard", []);
 
+  const addNote = (note) => {
+    setStorage([...storage, note]);
+  };
+
   if (!storage) {
     return <section>Loading...</section>;
   }
 
   return (
     <section className="board">
-      {storage.map((note) => (
-        <Note key={note.id} note={note} />
+      {storage.map((singleNote) => (
+        <span key={singleNote.id} className="board__display">
+          <Note note={singleNote} />
+        </span>
       ))}
-      <NewNote storage={storage} setStorage={setStorage} />
+      <NewNote addNote={addNote} />
     </section>
   );
 };

@@ -1,2 +1,23 @@
+@use "../../../styles/colors" as *;
+
 .note {
+  display: flex;
+  flex-direction: column;
+
+  &__fields {
+    width: 15rem;
+    resize: none;
+    margin: 0.1rem;
+    border: 2px solid $primary;
+    border-radius: 4px;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  &__title {
+    text-transform: uppercase;
+  }
+
+  &__description {
+    min-height: 6rem;
+  }
 }

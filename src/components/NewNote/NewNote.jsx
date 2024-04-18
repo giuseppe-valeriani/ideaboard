@@ -6,31 +6,62 @@ const template = {
   description: "",
 };
 
-const NewNote = ({ storage, setStorage }) => {
-  const [addNote, setAddNote] = useState(false);
+const NewNote = ({ addNote }) => {
+  const [addingNote, setAddingNote] = useState(false);
   const [note, setNote] = useState(template);
+  const [error, setError] = useState(false);
 
   const handleChange = (e) => {
-    console.log(note);
+    setError(false);
     setNote({ ...note, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!note.title || !note.description) {
+      return setError(true);
+    }
+
+    let noteToBeAdd = {
+      title: note.title,
+      description: note.description,
+      id: crypto.randomUUID(),
+    };
+
+    addNote(noteToBeAdd);
+    setError(false);
+    setNote(template);
   };
 
   return (
-    <article>
-      <button onClick={() => setAddNote(!addNote)}>add new note</button>
-      {addNote && (
-        <form onSubmit={handleSubmit}>
-          <input type="text" name="title" onChange={handleChange} />
+    <article className="new-note">
+      <button
+        className="new-note__button"
+        onClick={() => setAddingNote(!addingNote)}
+      >
+        {addingNote ? "cancel" : "add new note"}
+      </button>
+      {addingNote && (
+        <form className="new-note__form" onSubmit={handleSubmit}>
+          <input
+            className={`new-note__input${error ? ` new-note__error` : ``}`}
+            type="text"
+            name="title"
+            value={note.title}
+            onChange={handleChange}
+          />
           <textarea
+            className={`new-note__input new-note__area${
+              error ? ` new-note__error` : ``
+            }`}
             type="text"
             name="description"
+            value={note.description}
             onChange={handleChange}
           ></textarea>
-          <button type="submit">Add</button>
+          <button className="new-note__button" type="submit">
+            Add
+          </button>
         </form>
       )}
     </article>

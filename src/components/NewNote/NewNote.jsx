@@ -46,7 +46,6 @@ const NewNote = ({ addNote }) => {
         <form className="new-note__form" onSubmit={handleSubmit}>
           <input
             className={`new-note__input${error ? ` new-note__error` : ``}`}
-            type="text"
             name="title"
             value={note.title}
             onChange={handleChange}
@@ -55,7 +54,6 @@ const NewNote = ({ addNote }) => {
             className={`new-note__input new-note__area${
               error ? ` new-note__error` : ``
             }`}
-            type="text"
             name="description"
             value={note.description}
             onChange={handleChange}

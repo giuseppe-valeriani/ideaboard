@@ -10,9 +10,21 @@ const Board = () => {
     setStorage([...storage, note]);
   };
 
-  const updateNote = (modifiedNote) => {};
+  const updateNote = (modifiedNote) => {
+    let updatedStorage = storage.reduce((acc, curr) => {
+      // If the modified note is not the current, leave the current untouched
+      if (modifiedNote.id !== curr.id) {
+        return [...acc, curr];
+      }
+      // Else, get the new one instead
+      return [...acc, modifiedNote];
+    }, []);
+
+    setStorage(updatedStorage);
+  };
 
   const deleteNote = (currentId) => {
+    // Delete the note with the id of the one clicked
     let updatedStorage = storage.filter((el) => el.id !== currentId);
     setStorage(updatedStorage);
   };
@@ -25,7 +37,12 @@ const Board = () => {
     <section className="board">
       {storage.map((singleNote) => (
         <span key={singleNote.id} className="board__display">
-          <Note className="handle" note={singleNote} deleteNote={deleteNote} />
+          <Note
+            className="handle"
+            note={singleNote}
+            updateNote={updateNote}
+            deleteNote={deleteNote}
+          />
         </span>
       ))}
       <NewNote addNote={addNote} />

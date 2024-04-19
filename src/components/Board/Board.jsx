@@ -10,6 +10,13 @@ const Board = () => {
     setStorage([...storage, note]);
   };
 
+  const updateNote = (modifiedNote) => {};
+
+  const deleteNote = (currentId) => {
+    let updatedStorage = storage.filter((el) => el.id !== currentId);
+    setStorage(updatedStorage);
+  };
+
   if (!storage) {
     return <section>Loading...</section>;
   }
@@ -18,7 +25,7 @@ const Board = () => {
     <section className="board">
       {storage.map((singleNote) => (
         <span key={singleNote.id} className="board__display">
-          <Note note={singleNote} />
+          <Note className="handle" note={singleNote} deleteNote={deleteNote} />
         </span>
       ))}
       <NewNote addNote={addNote} />

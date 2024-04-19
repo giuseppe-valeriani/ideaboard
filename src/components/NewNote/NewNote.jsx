@@ -31,6 +31,7 @@ const NewNote = ({ addNote }) => {
     addNote(noteToBeAdd);
     setError(false);
     setNote(template);
+    setAddingNote(!addingNote);
   };
 
   return (

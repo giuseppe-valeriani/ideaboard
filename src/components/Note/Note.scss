@@ -1,16 +1,18 @@
 @use "../../../styles/colors" as *;
+@use "../../../styles/mixins" as *;
 
 .note {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  padding: 1rem 0.2rem;
 
   &__fields {
     width: 15rem;
-    resize: none;
     margin: 0.1rem;
     border: 2px solid $primary;
     border-radius: 4px;
-    padding: 0.5rem;
+    padding: 0.4rem;
     text-align: center;
   }
   &__title {
@@ -19,5 +21,15 @@
 
   &__description {
     min-height: 6rem;
+    resize: none;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__button {
+    @include button;
   }
 }

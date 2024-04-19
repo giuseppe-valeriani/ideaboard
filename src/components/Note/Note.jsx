@@ -56,9 +56,15 @@ const Note = ({ note, updateNote, deleteNote }) => {
         </button>
         <button
           className="note__button"
-          onClick={onEdit ? handleEdit : () => setOnEdit(true)}
+          onClick={
+            onDelete
+              ? () => setOnDelete(false)
+              : onEdit
+              ? handleEdit
+              : () => setOnEdit(true)
+          }
         >
-          {onEdit ? "confirm" : "edit"}
+          {onDelete ? "no" : onEdit ? "confirm" : "edit"}
         </button>
       </div>
     </article>

@@ -37,6 +37,7 @@ const Board = () => {
   return (
     <section className="board">
       <Reorder.Group
+        axis="x"
         values={storage}
         onReorder={setStorage}
         className="board__list"

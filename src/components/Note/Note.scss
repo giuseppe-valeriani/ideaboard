@@ -5,15 +5,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding: 1rem 0.5rem;
-  border: 2px dotted $dark;
-  border-radius: 2px;
-  box-shadow: 1px 1px 1px grey;
+  background-color: $secondary;
+  padding: 1.5rem 1rem;
+  box-shadow: 1px 1px 1px $dark;
+  border-radius: 6px;
 
   &__fields {
-    width: 15rem;
-    margin: 0.1rem;
-    border: 2px solid $primary;
+    max-width: 20rem;
+    margin: 0.2rem;
+    background-color: $secondary;
     border-radius: 4px;
     padding: 0.4rem;
     text-align: center;
@@ -21,20 +21,25 @@
 
   &__title {
     text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 700;
   }
 
   &__description {
     min-height: 6rem;
+    font-size: 1.2rem;
     resize: none;
   }
 
   &__date {
+    background-color: $secondary;
     font-size: 0.8rem;
     text-align: center;
-    padding: 0.1rem;
+    padding: 0.5rem;
   }
 
   &__buttons {
+    background-color: $secondary;
     display: flex;
     justify-content: space-around;
   }

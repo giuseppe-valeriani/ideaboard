@@ -2,11 +2,12 @@
   padding: 1rem;
 
   &__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     list-style: none;
     margin-block: 0;
     padding-inline: 0;
-    display: flex;
-    flex-wrap: wrap;
   }
 
   &__item {

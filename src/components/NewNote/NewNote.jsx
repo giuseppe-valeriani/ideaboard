@@ -26,6 +26,7 @@ const NewNote = ({ addNote }) => {
       title: note.title,
       description: note.description,
       id: crypto.randomUUID(),
+      date: Date.now(),
     };
 
     addNote(noteToBeAdd);

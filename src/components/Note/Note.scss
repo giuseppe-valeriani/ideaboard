@@ -5,7 +5,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding: 1rem 0.2rem;
+  padding: 1rem 0.5rem;
+  border: 2px dotted $dark;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px grey;
 
   &__fields {
     width: 15rem;
@@ -15,6 +18,7 @@
     padding: 0.4rem;
     text-align: center;
   }
+
   &__title {
     text-transform: uppercase;
   }
@@ -22,6 +26,12 @@
   &__description {
     min-height: 6rem;
     resize: none;
+  }
+
+  &__date {
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 0.1rem;
   }
 
   &__buttons {

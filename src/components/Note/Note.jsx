@@ -12,6 +12,7 @@ const Note = ({ note, updateNote, deleteNote }) => {
   };
 
   const handleEdit = () => {
+    setCurrentNote({ ...currentNote, date: Date.now() });
     updateNote(currentNote);
     setOnEdit(false);
   };
@@ -19,6 +20,8 @@ const Note = ({ note, updateNote, deleteNote }) => {
   const handleChange = (e) => {
     setCurrentNote({ ...currentNote, [e.target.name]: e.target.value });
   };
+
+  const readableDate = new Date(note.date).toDateString();
 
   return (
     <article className="note">
@@ -43,6 +46,7 @@ const Note = ({ note, updateNote, deleteNote }) => {
           <div className="note__fields note__description">
             {note.description}
           </div>
+          <div className="note__date">Last Update on: {readableDate}</div>
         </>
       )}
       <div className="note__buttons">

@@ -1,6 +1,7 @@
 import useLocalStorage from "../../hooks/useLocalStorage";
 import Note from "../Note/Note";
 import NewNote from "../NewNote/NewNote";
+import { Reorder } from "framer-motion";
 import "./Board.scss";
 
 const Board = () => {
@@ -35,16 +36,27 @@ const Board = () => {
 
   return (
     <section className="board">
-      {storage.map((singleNote) => (
-        <span key={singleNote.id} className="board__display">
-          <Note
-            className="handle"
-            note={singleNote}
-            updateNote={updateNote}
-            deleteNote={deleteNote}
-          />
-        </span>
-      ))}
+      <Reorder.Group
+        values={storage}
+        onReorder={setStorage}
+        className="board__list"
+      >
+        {storage.map((singleNote) => (
+          <Reorder.Item
+            value={singleNote}
+            className="board__item"
+            key={singleNote.id}
+            drag
+          >
+            <Note
+              className="handle"
+              note={singleNote}
+              updateNote={updateNote}
+              deleteNote={deleteNote}
+            />
+          </Reorder.Item>
+        ))}
+      </Reorder.Group>
       <NewNote addNote={addNote} />
     </section>
   );
